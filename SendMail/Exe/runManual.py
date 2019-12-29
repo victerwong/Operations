@@ -1,140 +1,102 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-
+#
 #    __author__ = 'wanggd'
 #    __date__ = '2019/12/11'
 #    __Ver.__ = v0.1
-#    __Desc__ = 用来定义一个执行窗口
+#    __Desc__ = 用来定义一个执行窗口;增加了动态生成菜单的功能年.
 
 
-import os,time,sys,configparser
+import os,threading,configparser
 import tkinter as tk
-import tkinter.messagebox
 from def_sendMail import sendMail
-from runBackground import schedJob
+# from decompressFiles import decomp
+# from runBackground import bkJob
 
-# ##通过参数统一设置文档执行内容：
-# ##sendTitl的取值是{dailyFirst,dailySec,dailyThird,month,weekly,weeklyFirst,weeklyed,名字无所谓只要匹配即可}:
-
-# ##sendTitl的取值是{每日优先估值,每日提前推送,每日,每月,每周提前,每周已核对,每周,名字无所谓只要匹配即可}:
-
-# #用于{每日优先估值}：
-# sendMail('dailyFirst')
+# #获取程序运行目录的父目录:
+# def abspath():
+#     # cur_path = os.path.dirname(os.path.realpath(__file__))    #这里是获取当前路径的办法
+#     abspath = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))  # 这里是获取当前路径的父路径
+#     return abspath
 #
-# #用于{每日提前推送}：
-# sendMail('dailySec')
-#
-# #用于{每日}：
-# sendMail('dailyThird')
-#
-# #用于{每月}：
-# sendMail('month')
-#
-# #用于{每周提前}：
-# sendMail('weeklyFirst')
-#
-# #用于{每周已核对}：
-# sendMail('weeklyed')
-#
-# #用于{每周}：
-# sendMail('weekly')
-
-# #用于测试：
-#
-# sendMail('发送测试')
-
-
-#获取程序运行目录的父目录:
-def abspath():
-    # cur_path = os.path.dirname(os.path.realpath(__file__))    #这里是获取当前路径的办法
-    abspath = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))  # 这里是获取当前路径的父路径
-    return abspath
-
-# 设定配置文件：
-svr_path = os.path.join(abspath(), 'Conf\svrcfg.ini')
+# # 设定配置文件：
+# svr_path = os.path.join(abspath(), 'Conf\svrcfg.ini')
+svr_path=r'C:\SendMail\Conf\svrcfg.ini'
 # 读取设置的配置文件：
 svr_conf = configparser.ConfigParser()
 svr_conf.read(svr_path, encoding='utf-8-sig')
 
-#
-btn1=svr_conf.options('path')[0]
-btn2=svr_conf.options('path')[1]
-btn3=svr_conf.options('path')[2]
-btn4=svr_conf.options('path')[3]
-btn5=svr_conf.options('path')[4]
-btn6=svr_conf.options('path')[5]
-btn7=svr_conf.options('path')[6]
-btn8=svr_conf.options('path')[7]
+nameList=svr_conf.options('path')
+nameLen=len(nameList)
 
-btn88='开启后台计划'
-btn99='停止运行'
-
-# 第1步，实例化object，建立窗口window
-window = tk.Tk()
-
-# 第2步，给窗口的可视化起名字
-window.title('自动发邮件程序')
-
-# 第3步，设定窗口的大小(长 * 宽)
-window.geometry('500x350')  # 这里的乘是小x
-
-# 第4步，在图形界面上创建一个标签label用以显示并放置
-l = tk.Label(window, bg='yellow', width=20, text='请选择要执行的任务：')
-l.pack()
+#构建四组列表，供后续界面分组：
+nameListDay=[]
+nameListWeek=[]
+nameListMonth=[]
+nameListOther=[]
+#按名字做分为四组列表：
+for name in nameList:
+    # print(name)
+    if '每日'in name:
+        nameListDay.append(name)
+    elif '每周' in name:
+        nameListWeek.append(name)
+    elif '每月' in name:
+        nameListMonth.append(name)
+    else:
+        nameListOther.append(name)
 
 
-# 第6步，定义触发函数功能
+def tkbtn(fm,list):
+    for btn in list:
+        ##command指令对接的方法，不用lambda，则会立即执行，用了lambda，则会固话for循环的最后一个值，使用lambda name=name：def(name),来动态匹配
+        tk.Button(fm,text=btn,command=lambda btn=btn:sendMail(btn)).pack(side='left', fill='x', expand='yes')
+    return tk.Button
 
-direction1=['left','right','center']
-direction2=['top','bottom' , 'left', 'right']
 
-def dailyFirst():
-    sendMail('每日优先估值')
-    # tkinter.messagebox.showinfo()
-def dailySec():
-    sendMail('每日提前推送')
+class App:
+    def __init__(self, master):
+        self.master = master
+        self.initWidgets()
 
-def dailyThird():
-    sendMail('每日')
+    def initWidgets(self):
+        # 创建第一个容器
+        fm1 = tk.Frame(self.master)
+        # 该容器放在左边排列
+        fm1.pack(side='top', fill='both', expand='yes')
+        tk.LabelFrame(fm1, bg='green', width=20, text='每日任务列表：')
+        # 设置按钮从顶部开始排列，且按钮只能在垂直（X）方向填充
+        tkbtn(fm1,nameListDay)
 
-def weeklyFirst():
-    sendMail('每周提前')
+        fm2 = tk.Frame(self.master)
+        fm2.pack(side='top', fill='both', expand='yes')
+        tk.Label(fm2, bg='green', width=20, text='每周任务列表：')
+        tkbtn(fm2, nameListWeek)
 
-def weeklySec():
-    sendMail('每周已核对')
+        fm3 = tk.Frame(self.master)
+        fm3.pack(side='top', fill='both', expand='yes')
+        tk.Label(fm3, bg='green', width=20, text='每月任务列表：')
+        tkbtn(fm3, nameListMonth)
 
-def weeklyThird():
-    sendMail('每周')
+        fm4 = tk.Frame(self.master)
+        fm4.pack(side='top', fill='both', expand='yes')
+        tk.Label(fm4, bg='green', width=20, text='其他任务列表：')
+        tkbtn(fm4, nameListOther)
 
-def month():
-    sendMail('每月')
+        fm5 = tk.Frame(self.master)
+        fm5.pack(side='top', fill='both', expand='yes')
+        # tk.Button(fm5, text='开启计划', command=schedJob).pack(side='left', fill='x', expand='yes')
+        # tk.Button(fm5, text='解压缩', command=lambda :decomp).pack(side='left', fill='x', expand='yes')
+        tk.Button(fm5, text='退出程序', command=exit).pack(side='left', fill='x', expand='yes')
 
-def testSend():
-    sendMail('发送测试')
+def main():
+    threading.Thread(target=gui_thread).start()
 
-try:
-    c1 = tk.Button(window, text=btn1, bg='green',command=dailyFirst)  # 传值原理类似于radioButton部件
-    c1.pack()
-    c2 = tk.Button(window, text=btn2, bg='green',command=dailySec)
-    c2.pack()
-    c3 = tk.Button(window, text=btn3, bg='green',command=dailyThird)
-    c3.pack()
-    c4 = tk.Button(window, text=btn4, bg='yellow',command=weeklyFirst)
-    c4.pack()
-    c5 = tk.Button(window, text=btn5, bg='yellow',command=weeklySec)
-    c5.pack()
-    c6 = tk.Button(window, text=btn6, bg='yellow',command=weeklyThird)
-    c6.pack()
-    c7 = tk.Button(window, text=btn7, bg='red',command=month)
-    c7.pack()
-    c8 = tk.Button(window, text=btn8,bg='green',command=testSend)
-    c8.pack(side='left')
-    c88 = tk.Button(window, text=btn88, bg='red',command=schedJob)
-    c88.pack(side='right')
-    c99 = tk.Button(window, text=btn99, bg='red',justify='left',command=SystemExit)
-    c99.pack(side='bottom')
-except:
-    pass
 
-# 第7步，主窗口循环显示
-window.mainloop()
+def gui_thread():
+    root = tk.Tk()
+    root.title("自动发邮件-手动补发程序")
+    app = App(root)
+    root.mainloop()
+
+main()

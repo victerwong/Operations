@@ -149,7 +149,7 @@ def sendMail(sendTitle):
 
 
         #当不使用密送时注释掉：
-        if sendTitle =='testSend' or sendTitle == None or sendTitle == '':
+        if sendTitle =='发送测试' or sendTitle == None or sendTitle == '':
             msg['bcc']=''
         else:
             msg['bcc']=bcc
@@ -186,27 +186,37 @@ def sendMail(sendTitle):
                 print('6.附件： ' + itemPath, file=sendRecoder)
 
                 #设定邮件主题：
-                if '估值' in item:
-                    msg_zt = fileName + '估值表'
-                elif '净值' in item:
-                    msg_zt = fileName + '净值表'
-                elif 'send'in item:
-                    msg_zt = '执行情况汇总'
+                if msg_conf.has_option(section, 'zt') == True and msg_conf.get(section, 'zt') != '' and msg_conf.get(section, 'zt') != None:
+                    msg_zt = msg_conf.get(section, 'zt')
                 else:
-                    msg_zt = '银河资本净值表'
+                    if '估值' in item:
+                        msg_zt = fileName + '估值表'
+                    elif '净值' in item:
+                        msg_zt = fileName + '净值表'
+                    elif 'send'in item:
+                        msg_zt = '执行情况汇总'
+                    else:
+                        msg_zt = '银河资本净值表'
 
                 ##设定正文内容：
                 if msg_conf.has_option(section, 'zw') == True and msg_conf.get(section, 'zw') != '' and msg_conf.get(section, 'zw') != None:
                     msg_zw = msg_conf.get(section, 'zw')
                 else:
-                    if sendTitle == '每日优先估值' or sendTitle =='发送测试':
-                        msg_zw = '您好，附件中是'+ nyrdate + msg_zt + '，请查收。\n尚未与托管行核对，供参考，请知悉。'
-                    elif sendTitle =='每日' :
-                        msg_zw = '您好，附件中标“未核对”的为未与托管行核对，请知悉。'
-                    elif sendTitle =='每周已核对':
-                        msg_zw = '您好，附件中是'+ nyrdate + msg_zt + '，已与托管行核对一致，请查收。'
+                    # if sendTitle == '每日优先估值' or sendTitle =='发送测试':
+                    #     msg_zw = '您好，附件中是'+ nyrdate + msg_zt + '，请查收。\n尚未与托管行核对，供参考，请知悉。'
+                    # elif sendTitle =='每日提前推送' or sendTitle =='每日' or sendTitle =='每周提前' or sendTitle =='每周' :
+                    #     msg_zw = '您好，附件中标“未核对”的为未与托管行核对，请知悉。'
+                    # elif sendTitle =='每周已核对':
+                    #     msg_zw = '您好，附件中是'+ msg_zt + '，已与托管行核对一致，请查收。'
+                    # else:
+                    #     msg_zw='您好！\n请查收'
+                    if '已核对' in sendTitle:
+                        msg_zw = '您好，附件中是' + msg_zt + '，已与托管行核对一致，请查收。'
+                    # elif:
+                    #     msg_zw = '您好，附件中是' + msg_zt + '，标“未核对”的为未与托管行核对，请知悉。'
                     else:
-                        msg_zw='您好！\n请查收'
+                        msg_zw = '您好，附件中标“未核对”的为未与托管行核对，请知悉。'
+
             else:
                 nofiles = nofiles + 1
 
@@ -229,15 +239,16 @@ def sendMail(sendTitle):
                 client.quit()
                 print('8.发送结果：' + '邮件成功发送！', file=sendRecoder)
                 print('===================' + '完成日志记录：' + '===================' + '\n\n', file=sendRecoder)
-                print(nyrdate+'_邮件主题：'+msg_zt + '_在：'+now+ '_发送----成功！', file=sendSucces)
+                print(nyrdate+ '类型:['+sendTitle+']_关键字：['+fileName + ']_在：'+now+ '_发送----成功！', file=sendSucces)
                 sendSucces.close()
                 ##如果成功发送，则15秒后发送下一封邮件：
-                time.sleep(15)
+                time.sleep(12)
             else:
                 print('101.附件：' + '未匹配到附件，发送失败，请检查附件或关键词。', file=sendRecoder)
                 print('===================' + '完成日志记录：' + '===================' + '\n\n', file=sendRecoder)
+                # time.sleep(3)
                 sendFaile = open(attPath + '\sendFaile.txt', 'a+')  ##txt文件名，请务必与ini文件中的设置保持一致。
-                print(nyrdate + '_邮件主题：' + fileName + '_在：' + now + '_发送----失败（未匹配到附件）！', file=sendFaile)
+                print(nyrdate +  '类型:['+sendTitle+']_关键字：['+fileName + ']_在：'+now + '_发送----失败（未匹配到附件）！', file=sendFaile)
                 sendFaile.close()
         #创建异常的相关记录：
         except Exception as e:
@@ -246,9 +257,8 @@ def sendMail(sendTitle):
             print('===================' + '完成日志记录：' + '===================' + '\n\n', file=sendRecoder)
             ##txt文件名，请务必与ini文件中的设置保持一致。
             sendFaile = open(attPath+'\sendFaile.txt', 'a+')
-            print(nyrdate+'_邮件主题：'+msg_zt + '_在：'+now+ '_发送----失败(异常)！', file=sendFaile)
+            print(nyrdate+ '类型:['+sendTitle+']_关键字：['+fileName + ']_在：'+now+ '_发送----失败(异常)！', file=sendFaile)
             sendFaile.close()
-
 
 
     ##压缩目录：
@@ -258,8 +268,8 @@ def sendMail(sendTitle):
     zipDir(attPath, zipToday+'\\'+sendTitle+now+'.zip')
     ##删除目录：
     shutil.rmtree(attPath)
-    time.sleep(5)
 
+    time.sleep(3)
     ##重新创建目录，以供后续传入文件：
     csh()
 
