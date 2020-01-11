@@ -14,6 +14,10 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
   <component name="ProjectId" id="1UmNVUm5FbTT2FWIrMYfF1MWmNc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -22,6 +26,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.project" />
@@ -235,17 +240,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="670" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576206493427" />
+    <state x="1084" y="644" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578704366419">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="1084" y="644" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1440@0.0.2560.1440" timestamp="1578704366419" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SendMail$dailyFirst.coverage" NAME="dailyFirst Coverage Results" MODIFIED="1576060910334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
-    <SUITE FILE_PATH="coverage/SendMail$run.coverage" NAME="run Coverage Results" MODIFIED="1576144372378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
     <SUITE FILE_PATH="coverage/SendMail$Scheduler.coverage" NAME="Scheduler Coverage Results" MODIFIED="1576137159187" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
     <SUITE FILE_PATH="coverage/SendMail$runManual.coverage" NAME="runManual Coverage Results" MODIFIED="1576484599815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
-    <SUITE FILE_PATH="coverage/SendMail$weeklyThird.coverage" NAME="weeklyThird Coverage Results" MODIFIED="1576058759708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
-    <SUITE FILE_PATH="coverage/SendMail$month.coverage" NAME="month Coverage Results" MODIFIED="1576044443262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
-    <SUITE FILE_PATH="coverage/SendMail$test.coverage" NAME="test Coverage Results" MODIFIED="1576122142337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
     <SUITE FILE_PATH="coverage/SendMail$runBackground.coverage" NAME="runBackground Coverage Results" MODIFIED="1576466436238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
-    <SUITE FILE_PATH="coverage/SendMail$testSend.coverage" NAME="testSend Coverage Results" MODIFIED="1576047796415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
+    <SUITE FILE_PATH="coverage/SendMail$test.coverage" NAME="test Coverage Results" MODIFIED="1576122142337" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
     <SUITE FILE_PATH="coverage/SendMail$def_sendMail.coverage" NAME="def_sendMail Coverage Results" MODIFIED="1576131517445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
+    <SUITE FILE_PATH="coverage/SendMail$month.coverage" NAME="month Coverage Results" MODIFIED="1576044443262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
+    <SUITE FILE_PATH="coverage/SendMail$run.coverage" NAME="run Coverage Results" MODIFIED="1576144372378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
+    <SUITE FILE_PATH="coverage/SendMail$testSend.coverage" NAME="testSend Coverage Results" MODIFIED="1576047796415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
+    <SUITE FILE_PATH="coverage/SendMail$weeklyThird.coverage" NAME="weeklyThird Coverage Results" MODIFIED="1576058759708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
+    <SUITE FILE_PATH="coverage/SendMail$dailyFirst.coverage" NAME="dailyFirst Coverage Results" MODIFIED="1576060910334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Exe" />
   </component>
 </project>
