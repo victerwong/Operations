@@ -19,6 +19,7 @@
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1UmNVUm5FbTT2FWIrMYfF1MWmNc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -192,11 +193,24 @@
       <workItem from="1576213977034" duration="7035000" />
       <workItem from="1576221588971" duration="1822000" />
       <workItem from="1576457923221" duration="20799000" />
+      <workItem from="1578704349228" duration="356000" />
     </task>
+    <task id="LOCAL-00001" summary="添加自动解压缩（rar文件）的功能">
+      <created>1578704673116</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1578704673116</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加自动解压缩（rar文件）的功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加自动解压缩（rar文件）的功能" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="181" key="#Notifications" timestamp="1576135131430">
@@ -211,6 +225,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="168" key="#def_sendMail/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1576047967292" />
+    <state x="897" y="311" key="CommitChangelistDialog2" timestamp="1578704672985">
+      <screen x="0" y="23" width="2560" height="1366" />
+    </state>
+    <state x="897" y="311" key="CommitChangelistDialog2/0.23.2560.1366@0.23.2560.1366" timestamp="1578704672985" />
     <state width="1877" height="196" key="GridCell.Tab.0.bottom" timestamp="1576486886912">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
