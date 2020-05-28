@@ -7,24 +7,35 @@
 #    __Desc__ = 用来定义一个执行窗口;增加了动态生成菜单的功能年.
 
 
-import os,threading,configparser
+import os,threading,sys,configparser
 import tkinter as tk
 from def_sendMail import sendMail
-# from decompressFiles import decomp
+from decompressFiles import doCompRar
+from writerarconf import writeConf
 # from runBackground import bkJob
 
-# #获取程序运行目录的父目录:
-# def abspath():
-#     # cur_path = os.path.dirname(os.path.realpath(__file__))    #这里是获取当前路径的办法
-#     abspath = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))  # 这里是获取当前路径的父路径
-#     return abspath
-#
-# # 设定配置文件：
-# svr_path = os.path.join(abspath(), 'Conf\svrcfg.ini')
-svr_path=r'C:\SendMail\Conf\svrcfg.ini'
+#获取程序运行目录的父目录:
+def abspath():
+    # cur_path = os.path.dirname(os.path.realpath(__file__))    #这里是获取当前路径的办法
+    abspath = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))  # 这里是获取当前路径的父路径
+    return abspath
+
+# 设定配置文件：
+svr_path = os.path.join(abspath(), 'Conf\svrcfg.ini')
+# svr_path=r'C:\SendMail\Conf\svrcfg.ini'
 # 读取设置的配置文件：
 svr_conf = configparser.ConfigParser()
 svr_conf.read(svr_path, encoding='utf-8-sig')
+
+def getSvrOption(section, option):
+    try:
+        getSvrOption = svr_conf.get(section, option)
+        return getSvrOption
+    except:
+        print('[svrcfg.ini]字典设置有误，请检查或修正后再运行。')
+        sys.exit()
+
+parent_path = getSvrOption('rarfile', 'parent_path')
 
 nameList=svr_conf.options('path')
 nameLen=len(nameList)
@@ -86,8 +97,12 @@ class App:
         fm5 = tk.Frame(self.master)
         fm5.pack(side='top', fill='both', expand='yes')
         # tk.Button(fm5, text='开启计划', command=schedJob).pack(side='left', fill='x', expand='yes')
-        # tk.Button(fm5, text='解压缩', command=lambda :decomp).pack(side='left', fill='x', expand='yes')
-        tk.Button(fm5, text='退出程序', command=exit).pack(side='left', fill='x', expand='yes')
+        tk.Button(fm5, text='生成配置文件（rarcfg）', command=lambda: writeConf(r'D:\Codes\unZip','rartype')).pack(side='left', fill='x', expand='yes')
+        tk.Button(fm5, text='解压缩（测试）', command=lambda :doCompRar()).pack(side='left', fill='x', expand='yes')
+
+        fm6 = tk.Frame(self.master)
+        fm6.pack(side='top', fill='both', expand='yes')
+        tk.Button(fm6, text='退出程序', command=exit).pack(side='left', fill='x', expand='yes')
 
 def main():
     threading.Thread(target=gui_thread).start()

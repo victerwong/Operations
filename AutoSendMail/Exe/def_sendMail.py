@@ -250,6 +250,7 @@ def sendMail(sendTitle):
                 sendFaile = open(attPath + '\sendFaile.txt', 'a+')  ##txt文件名，请务必与ini文件中的设置保持一致。
                 print(nyrdate +  '类型:['+sendTitle+']_关键字：['+fileName + ']_在：'+now + '_发送----失败（未匹配到附件）！', file=sendFaile)
                 sendFaile.close()
+                time.sleep(5)
         #创建异常的相关记录：
         except Exception as e:
             print('102.发送结果：发送异常，请检查相关配置（如网络连接状态、发送间隔等）.', file=sendRecoder)
@@ -259,6 +260,7 @@ def sendMail(sendTitle):
             sendFaile = open(attPath+'\sendFaile.txt', 'a+')
             print(nyrdate+ '类型:['+sendTitle+']_关键字：['+fileName + ']_在：'+now+ '_发送----失败(异常)！', file=sendFaile)
             sendFaile.close()
+            time.sleep(5)
 
 
     ##压缩目录：

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Conf/rarcfg.ini" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Files/testSend/sendSucces.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Result/dailyFirst20191211.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Result/sendSucces_testSend_20190303.txt" charset="GBK" />
