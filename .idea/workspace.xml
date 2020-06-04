@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0b470a6-9bf3-47f8-892a-25fdfcda7829" name="默认更改列表" comment="" />
+    <list default="true" id="c0b470a6-9bf3-47f8-892a-25fdfcda7829" name="默认更改列表" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,6 +67,7 @@
       <workItem from="1590633953786" duration="7063000" />
       <workItem from="1591153387514" duration="4171000" />
       <workItem from="1591162001615" duration="3950000" />
+      <workItem from="1591236098866" duration="1434000" />
     </task>
     <task id="LOCAL-00001" summary="2020.5.28">
       <created>1590634561593</created>
@@ -108,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591173601605</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="2020.5.28">
+      <created>1591236110570</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1591236110570</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,10 +146,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591167817524" />
-    <state x="558" y="86" key="CommitChangelistDialog2" timestamp="1591173601169">
+    <state x="558" y="86" key="CommitChangelistDialog2" timestamp="1591236109899">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="558" y="86" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591173601169" />
+    <state x="558" y="86" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1591236109899" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1591162016661">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
